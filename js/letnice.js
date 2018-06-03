@@ -77,14 +77,15 @@ function Year()
   {
     base.innerHTML += `
       <div class="month">
-      <span class="m" x="" y='${month * 140}' dy="10">${monthNames[new Date(year, month).getMonth()].substr(0,1)}</span>
+      <span class="m" x="" y='${month * 140}' dy="10">${monthNames[new Date(year, month).getMonth()].substr(0,3)}</span>
       <svg class="graph" >
-      ${doweeks()}
+      ${dayLabels()}
+      ${populateMonth(month)}
       </svg></div>`
     month++
   }
 
-  function doweeks()
+  function dayLabels()
   {
     let html = "";
     let y = 0;
@@ -93,27 +94,23 @@ function Year()
     {
       y = i * 20;
       html += `<text class="w" x="7" y='${y}' dy="10">${dayNames[new Date(year, month, i).getDay()].substr(0,1)}</text>`
-      count++
     }
     return html;
   }
-}
 
-
-
-Date.prototype.getMonthName = function()
-{
-  return this.monthNames[this.getMonth()]
-}
-
-function constructWeekLabels(w)
-{
-  let i = "";
-  switch(w){
-    case 0: i="M";break; case 1: i="T";break; case 2: i="W";break; case 3: i="T";break; case 4: i="F";break; case 5: i="S";break; case 6: i="S";
+  function populateMonth(i)
+  {
+    mlength = new Date(year, month, 0).getDate();
+    let day = 0;
+    while(day < mlength)
+    {
+      //is it monday? is it tuesday? etc. instantiate null until day match then start for every day;
+      day++
+    }
   }
-  return i;
 }
+
+
   
   // while(count <= days)
   // {
