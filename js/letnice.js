@@ -70,15 +70,17 @@ function Year()
         //start comparing date with weekdays
           //start iterating through days from a match until month is over
 
+
+  //let cell = parseInt((base.getBoundingClientRect().width - 52*2)/52)
+
   while(month < 12)
   {
     base.innerHTML += `
       <div class="month">
       <span class="m" x="" y='${month * 140}' dy="10">${monthNames[new Date(year, month).getMonth()].substr(0,1)}</span>
-      <svg class="graph">
+      <svg class="graph" >
       ${doweeks()}
-      </svg></div>
-      `
+      </svg></div>`
     month++
   }
 
@@ -87,14 +89,12 @@ function Year()
     let html = "";
     let y = 0;
 
-    while(week<7)
+    for(i=0; i<7; i++)
     {
-      y += week * 20;
-      html += `<text class="w" x="10" y='${y}' dy="10">${dayNames[new Date(year, month, week).getDay()].substr(0,1)}</text>`
-      week++
+      y = i * 20;
+      html += `<text class="w" x="7" y='${y}' dy="10">${dayNames[new Date(year, month, i).getDay()].substr(0,1)}</text>`
       count++
     }
-    week = 0;
     return html;
   }
 }
