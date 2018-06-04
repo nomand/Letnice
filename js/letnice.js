@@ -77,7 +77,7 @@ function Year()
   {
     base.innerHTML += `
       <div class="month">
-      <span class="m" x="" y='${month * 140}' dy="10">${monthNames[new Date(year, month).getMonth()].substr(0,3)}</span>
+      <p class="m" x="" y='${month * 140}' dy="10">${monthNames[new Date(year, month).getMonth()].substr(0,2)}</p>
       <svg class="graph" >
       ${dayLabels()}
       ${populateMonth(month)}
