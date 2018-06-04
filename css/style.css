@@ -40,9 +40,3 @@ svg.graph rect.day { fill:#8b8b8b; }
 svg.graph rect.weekend { fill:#747474 }
 svg.graph rect.gone { fill:#000000 }
 svg.graph path { stroke-linecap: butt; stroke-dasharray: 1,1; fill:none; stroke:#333; stroke-width:13px }
-
-@media screen and (max-width: 1000px) {
-    body {
-        width: 60%;
-    }
-}
