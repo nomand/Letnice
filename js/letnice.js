@@ -1,26 +1,23 @@
 function Year()
 {
-  let base = document.body;
-
+  let base = document.getElementById("center");
   let year = new Date().getFullYear();
 
   const monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-  const dayNames = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ]
-
-  // let leap = new Date(year, 1, 29).getDate() === 29;
-  // let days = leap ? 366 : 365;
-  // let cell = parseInt((base.getBoundingClientRect().width - 52*2)/52);
+  const dayNames = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" ]
 
   let count = 1;
   let month = 0;
 
   let style = "day";
   
+  base.innerHTML += `<p class="y">${year}</p>`
+
   while(month < 12)
   {
     base.innerHTML += `
       <div class="month">
-      <p class="m" x="" y='${month * 140}' dy="10">${monthNames[new Date(year, month).getMonth()].substr(0,2)}</p>
+      <p class="m">${monthNames[new Date(year, month).getMonth()].substr(0,3)}</p>
       <svg class="graph" id="${monthNames[month]}">
       ${dayLabels()}
       ${populateMonth(month)}
@@ -36,7 +33,7 @@ function Year()
     for(i = 0; i < 7; i++)
     {
       y = i * 14;
-      html += `<text class="dayLabel" x="3" y='${y}' dy="10">${dayNames[i].substr(0,1)}</text>`
+      html += `<text class="dayLabel" x="5" y='${y}' dy="10">${dayNames[i].substr(0,1)}</text>`
     }
     return html;
   }
@@ -45,34 +42,44 @@ function Year()
   {
     html = "";
     monthLength = new Date(year, month+1, 0).getDate();
-    let day = 0;
+    let date = 0;
     let x = 0;
     let y = 0;
 
-    while(day < monthLength)
+    while(date < monthLength)
     {
       x += 14;
-      let weekDay = 0
+      let week = 0
       
-      while(weekDay < 7 && day != monthLength)
+      while(week < 7 && date != monthLength)
       {
-        y = weekDay * 14;
-        
-        if(new Date(year, month, day).getDay() != weekDay)
+        y = week * 14;
+        let day = new Date(year, month, date);
+
+        console.log(day);
+        console.log(new Date().getMonth());
+
+        if(day.getDay() != week)
         {
           style = "null";
+          date--
+        }
+        else if(day == new Date())
+        {
+          style = "today";
         }
         else
         {
           style = "day";
         }
 
-        html += `<rect class='${style}' x='${x}' y='${y}' title='${day+1}' width="12px" height="12px" rx="2" ry="2" onclick=""></rect>`
-        weekDay++
-        day++
+        html += `<rect class='${style}' x='${x}' y='${y}' title='${date+1}' width="12px" height="12px" rx="2" ry="2" onclick=""></rect>`
+        week++
+        date++
         count++
       }
     }
     return html;
   }
+
 }
