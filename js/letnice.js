@@ -90,10 +90,10 @@ function Year()
     let html = "";
     let y = 0;
 
-    for(i=0; i<7; i++)
+    for(i = 0; i < 7; i++)
     {
-      y = i * 20;
-      html += `<text class="w" x="7" y='${y}' dy="10">${dayNames[new Date(year, month, i).getDay()].substr(0,1)}</text>`
+      y = i * 20; console.log(month+", "+i + ", y"+y)
+      html += `<text class="w" x="7" y='${y}' dy="10">${dayNames[i].substr(0,1)}</text>`
     }
     return html;
   }
