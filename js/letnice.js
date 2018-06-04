@@ -11,7 +11,7 @@ function Year()
   
   function doHeader()
   {
-    return `<div class="header"><p class="y">${year}</p><p class="p">${yearProgress(2018) + "%"}</p></div>`;
+    return `<div class="header"><p class="y">${year}</p><p class="p">${yearProgress(year) + "%"}</p></div>`;
   }
 
   while(month < 12)
@@ -87,6 +87,6 @@ function Year()
   function yearProgress(year)
   {
     progress = new Date() - new Date(year, 0, 1, 0);
-    return (progress/31536000000).toFixed(2);
+    return ((progress/31536000000)*100).toFixed(2);
   }
 }
