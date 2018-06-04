@@ -9,11 +9,15 @@ function Year()
   let month = 0;
   let style = "day";
   
-  base.innerHTML += `<div class="header"><p class="y">${year}</p><p class="p">${yearProgress(2018) + "%"}</p></div>`
+  function doHeader()
+  {
+    return `<div class="header"><p class="y">${year}</p><p class="p">${yearProgress(2018) + "%"}</p></div>`;
+  }
 
   while(month < 12)
   {
     base.innerHTML += `<div class="month">
+      ${month==0?doHeader():""}
       <p class="m">${monthNames[new Date(year, month).getMonth()].substr(0,2)}</p>
       <svg class="graph" id="${monthNames[month]}">
       ${doLabels()}

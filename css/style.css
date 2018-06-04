@@ -23,12 +23,12 @@ section {
 }
 
 .month { width:100px; margin: 10px; display: inline-block;}
-.header { margin: 20px; }
+.header { margin-bottom: 40px; }
 
 p  { margin: 0px; }
 .m { font-size: 21px; font-weight: bold; margin-bottom: 5px; text-align: left; }
 .y { font-size: 40px; font-weight: bold; text-align: middle;}
-.p { font-size: 20px; text-align: middle; color: #8b8b8b}
+.p { font-size: 20px; text-align: left; color: #8b8b8b}
 
 svg.graph { color:white; width: 100%; }
 svg.graph text {font-family: 'input_mono_regular'; stroke:none; fill:#8b8b8b; font-size:14px; text-anchor: middle; }
@@ -40,3 +40,9 @@ svg.graph rect.day { fill:#8b8b8b; }
 svg.graph rect.weekend { fill:#747474 }
 svg.graph rect.gone { fill:#000000 }
 svg.graph path { stroke-linecap: butt; stroke-dasharray: 1,1; fill:none; stroke:#333; stroke-width:13px }
+
+@media screen and (max-width: 1000px) {
+    body {
+        width: 60%;
+    }
+}
