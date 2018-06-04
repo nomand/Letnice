@@ -46,6 +46,7 @@ function Year()
     let date = 0;
     let x = 0;
     let y = 0;
+    let today = new Date(year, new Date().getMonth(), new Date().getDate(), 0);
 
     while(date < monthLength)
     {
@@ -62,7 +63,7 @@ function Year()
           style = "null";
           date--
         }
-        else if(day < new Date(year, new Date().getMonth(), new Date().getDate(), 0))
+        else if(day < today)
         {
           style = "gone";
         }
