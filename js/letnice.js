@@ -1,44 +1,41 @@
 function Year()
 {
   let base = document.getElementById("center");
-  let year = new Date().getFullYear();
 
   const monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
   const dayNames = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" ]
 
-  let count = 1;
+  let year = new Date().getFullYear();
   let month = 0;
-
   let style = "day";
   
-  base.innerHTML += `<p class="y">${year}</p>`
+  base.innerHTML += `<div class="header"><p class="y">${year}</p><p class="p">${yearProgress(2018) + "%"}</p></div>`
 
   while(month < 12)
   {
-    base.innerHTML += `
-      <div class="month">
-      <p class="m">${monthNames[new Date(year, month).getMonth()].substr(0,3)}</p>
+    base.innerHTML += `<div class="month">
+      <p class="m">${monthNames[new Date(year, month).getMonth()].substr(0,2)}</p>
       <svg class="graph" id="${monthNames[month]}">
-      ${dayLabels()}
-      ${populateMonth(month)}
+      ${doLabels()}
+      ${doMonth(month)}
       </svg></div>`
     month++
   }
 
-  function dayLabels()
+  function doLabels()
   {
     let html = "";
     let y = 0;
     
     for(i = 0; i < 7; i++)
     {
-      y = (i * 14)-1;
+      y = (i * 14)+1;
       html += `<text class="dayLabel" x="5" y='${y}' dy="10">${dayNames[i].substr(0,1)}</text>`
     }
     return html;
   }
 
-  function populateMonth(month)
+  function doMonth(month)
   {
     html = "";
     monthLength = new Date(year, month+1, 0).getDate();
@@ -53,7 +50,7 @@ function Year()
       
       while(week < 7 && date != monthLength)
       {
-        y = week * 14;
+        y = week * 14 + 2;
         let day = new Date(year, month, date);
 
         if(day.getDay() != week)
@@ -61,13 +58,13 @@ function Year()
           style = "null";
           date--
         }
+        else if(day < new Date())
+        {
+          style = "gone";
+        }
         else if(day.getDay() == 5 || day.getDay() == 6)
         {
           style = "weekend";
-        }
-        else if(day == new Date())
-        {
-          style = "today";
         }
         else
         {
@@ -77,9 +74,14 @@ function Year()
         html += `<rect class='${style}' x='${x}' y='${y}' title='${dayNames[week] + "_" + (date+1)}' width="12px" height="12px" rx="2" ry="2" onclick=""></rect>`
         week++
         date++
-        count++
       }
     }
     return html;
+  }
+
+  function yearProgress(year)
+  {
+    progress = new Date() - new Date(year, 0, 1, 0);
+    return (progress/31536000000).toFixed(2);
   }
 }

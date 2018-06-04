@@ -5,6 +5,8 @@ body {
     display: block;
     padding: 0px;
     margin: 0px;
+    font-family: 'input_mono_regular';
+    text-transform: uppercase;
 }
 
 section {
@@ -12,32 +14,26 @@ section {
     top: 50%;
     width: 100%;
     user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     text-align: center;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 20px;
-}
-p {
-    margin: 0px;
 }
 
-.month {
-    width:100px;
-    display: inline-block;
-    margin: 10px;
-}
+.month { width:100px; margin: 10px; display: inline-block;}
+.header { margin: 20px; }
 
-.m { font-size: 20px; font-weight: bold; font-family: 'input_mono_regular'; text-transform: uppercase; margin-bottom: 10px; text-align: left; }
-.y { font-size: 40px; font-weight: bold; font-family: 'input_mono_regular'; text-transform: uppercase; margin-bottom: 40px; text-align: middle; }
+p  { margin: 0px; }
+.m { font-size: 21px; font-weight: bold; margin-bottom: 5px; text-align: left; }
+.y { font-size: 40px; font-weight: bold; text-align: middle;}
+.p { font-size: 20px; text-align: middle; color: #8b8b8b}
 
 svg.graph { color:white; width: 100%; }
-svg.graph text {font-family: 'input_mono_regular'; stroke:none; fill:#8b8b8b; font-size:14px; text-anchor: middle;}
-svg.graph text.dayLabel { font-size: 10px; font-weight: 200; }
+svg.graph text {font-family: 'input_mono_regular'; stroke:none; fill:#8b8b8b; font-size:14px; text-anchor: middle; }
+svg.graph text.dayLabel { font-size: 10px; }
 svg.graph rect { stroke:none }
-svg.graph rect:hover { fill:#a1a1a1 !important; cursor:pointer}
 svg.graph rect.null { fill: none; stroke: none;}
 svg.graph rect.today { fill:#ffffff; stroke: #000000;}
 svg.graph rect.day { fill:#8b8b8b; }
