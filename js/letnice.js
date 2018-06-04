@@ -62,7 +62,7 @@ function Year()
           style = "null";
           date--
         }
-        else if(day < new Date())
+        else if(day < new Date(year, new Date().getMonth(), new Date().getDate(), 0))
         {
           style = "gone";
         }
