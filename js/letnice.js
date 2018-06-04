@@ -32,7 +32,7 @@ function Year()
     
     for(i = 0; i < 7; i++)
     {
-      y = i * 14;
+      y = (i * 14)-1;
       html += `<text class="dayLabel" x="5" y='${y}' dy="10">${dayNames[i].substr(0,1)}</text>`
     }
     return html;
@@ -56,13 +56,14 @@ function Year()
         y = week * 14;
         let day = new Date(year, month, date);
 
-        console.log(day);
-        console.log(new Date().getMonth());
-
         if(day.getDay() != week)
         {
           style = "null";
           date--
+        }
+        else if(day.getDay() == 5 || day.getDay() == 6)
+        {
+          style = "weekend";
         }
         else if(day == new Date())
         {
@@ -73,7 +74,7 @@ function Year()
           style = "day";
         }
 
-        html += `<rect class='${style}' x='${x}' y='${y}' title='${date+1}' width="12px" height="12px" rx="2" ry="2" onclick=""></rect>`
+        html += `<rect class='${style}' x='${x}' y='${y}' title='${dayNames[week] + "_" + (date+1)}' width="12px" height="12px" rx="2" ry="2" onclick=""></rect>`
         week++
         date++
         count++
@@ -81,5 +82,4 @@ function Year()
     }
     return html;
   }
-
 }

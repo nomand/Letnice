@@ -30,17 +30,17 @@ p {
     margin: 10px;
 }
 
-.m { font-size: 20px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; text-transform: uppercase; margin-bottom: 10px; text-align: left; }
-.y { font-size: 40px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; text-transform: uppercase; margin-bottom: 40px; text-align: middle; }
+.m { font-size: 20px; font-weight: bold; font-family: 'input_mono_regular'; text-transform: uppercase; margin-bottom: 10px; text-align: left; }
+.y { font-size: 40px; font-weight: bold; font-family: 'input_mono_regular'; text-transform: uppercase; margin-bottom: 40px; text-align: middle; }
 
 svg.graph { color:white; width: 100%; }
-svg.graph text {font-family: Arial, Helvetica, sans-serif; stroke:none; fill:#000000; font-size:14px; text-anchor: middle;}
+svg.graph text {font-family: 'input_mono_regular'; stroke:none; fill:#8b8b8b; font-size:14px; text-anchor: middle;}
 svg.graph text.dayLabel { font-size: 10px; font-weight: 200; }
 svg.graph rect { stroke:none }
 svg.graph rect:hover { fill:#a1a1a1 !important; cursor:pointer}
 svg.graph rect.null { fill: none; stroke: none;}
 svg.graph rect.today { fill:#ffffff; stroke: #000000;}
-svg.graph rect.day { fill:#5f5757; }
-svg.graph rect.weekend { fill:#505050 }
+svg.graph rect.day { fill:#8b8b8b; }
+svg.graph rect.weekend { fill:#747474 }
 svg.graph rect.gone { fill:#000000 }
 svg.graph path { stroke-linecap: butt; stroke-dasharray: 1,1; fill:none; stroke:#333; stroke-width:13px }
