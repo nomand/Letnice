@@ -78,7 +78,7 @@ function Year()
     base.innerHTML += `
       <div class="month">
       <p class="m" x="" y='${month * 140}' dy="10">${monthNames[new Date(year, month).getMonth()].substr(0,2)}</p>
-      <svg class="graph" >
+      <svg class="graph">
       ${dayLabels()}
       ${populateMonth(month)}
       </svg></div>`
@@ -92,21 +92,38 @@ function Year()
 
     for(i = 0; i < 7; i++)
     {
-      y = i * 20; console.log(month+", "+i + ", y"+y)
-      html += `<text class="w" x="7" y='${y}' dy="10">${dayNames[i].substr(0,1)}</text>`
+      y = i * 20;
+      html += `<text class="dayLabel" x="7" y='${y}' dy="10">${dayNames[i].substr(0,1)}</text>`
     }
     return html;
   }
 
-  function populateMonth(i)
+  function populateMonth(m)
   {
-    mlength = new Date(year, month, 0).getDate();
+    html = "";
+    monthLength = new Date(year, m, 0).getDate();
     let day = 0;
-    while(day < mlength)
+    let x = 14;
+    let y = 0;
+
+    while(day < monthLength)
     {
-      //is it monday? is it tuesday? etc. instantiate null until day match then start for every day;
-      day++
+      let i = 0
+      x += 14;
+      
+      while(i < 7)
+      {
+        y = i * 14;
+        
+        //is it monday? is it tuesday? etc. instantiate null until day match then start for every day;
+        
+        html += `<rect class="day" x='${x}' y='${y}' title='${day}' width="12px" height="12px" rx="2" ry="2" onclick=""></rect>`
+        i++
+        day++
+        count++
+      }
     }
+    return html;
   }
 }
 
