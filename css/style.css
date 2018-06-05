@@ -10,9 +10,9 @@ body {
 }
 
 section {
-    position: absolute;
+    position: relative;
     top: 50%;
-    width: 100%;
+    margin: 0px auto;
     user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -40,3 +40,13 @@ svg.graph rect.day { fill:#8b8b8b; }
 svg.graph rect.weekend { fill:#747474 }
 svg.graph rect.gone { fill:#000000 }
 svg.graph path { stroke-linecap: butt; stroke-dasharray: 1,1; fill:none; stroke:#333; stroke-width:13px }
+
+@media only screen and (min-width: 1440px)
+{ section { width: 1440px; }}
+
+@media only screen and (max-width: 1440px)
+{ section { width: 720px; }}
+
+@media only screen and (max-width: 720px)
+{ section { width: 360px; }}
+
