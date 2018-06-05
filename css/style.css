@@ -35,7 +35,7 @@ svg.graph text {font-family: 'input_mono_regular'; stroke:none; fill:#8b8b8b; fo
 svg.graph text.dayLabel { font-size: 10px; }
 svg.graph rect { stroke:none }
 svg.graph rect.null { fill: none; stroke: none;}
-svg.graph rect.today { fill:#ffffff; stroke: #000000;}
+svg.graph rect.today { fill:#ff1e00; }
 svg.graph rect.day { fill:#8b8b8b; }
 svg.graph rect.weekend { fill:#747474 }
 svg.graph rect.gone { fill:#000000 }
