@@ -26,8 +26,10 @@ section {
 .header { margin-bottom: 40px; }
 
 p  { margin: 0px; }
-.m { font-size: 21px; font-weight: bold; margin-bottom: 5px; text-align: left; }
-.y { font-size: 40px; font-weight: bold; text-align: middle;}
+.m { font-size: 20px; font-weight: bold; margin-bottom: 5px; text-align: left; }
+.y { font-size: 40px; font-weight: bold; }
+.y a { font-size: 20px; cursor: pointer; width: 24px; height: 24px; }
+.y a:hover {color: #ffffff; background-color: #000000;}
 .p { font-size: 20px; text-align: left; color: #8b8b8b}
 
 svg.graph { color:white; width: 100%; }

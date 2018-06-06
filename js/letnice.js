@@ -1,16 +1,20 @@
-const monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-const dayNames = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",  "Sunday" ]
-
-function Year(y)
+function Year(letnice)
 {
   let base = document.getElementById("center");
+  base.innerHTML = "";
+  let year;
 
-  let year = String(y).replace("#", "");
+  isNaN(letnice) ? year = new Date().getFullYear() : year = String(letnice).replace("#", "").substr(0,4);
+
+  location.hash = year;
+
+  const monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+  const dayNames = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",  "Sunday" ]
 
   let month = 0;
-  let today = new Date(year, new Date().getMonth(), new Date().getDate()-1, 0);
+  let today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()-1, 0);
   let style = "";
-
+  
   while(month < 12)
   {
     base.innerHTML += `<div class="month">
@@ -25,7 +29,7 @@ function Year(y)
 
   function doHeader()
   {
-    return `<div class="header"><p class="y">${year}<a onclick="changeHash(1);">+</a><a onclick="changeHash(-1);">-</a></p><p class="p">${yearProgress(year) + "%"}</p></div>`;
+    return `<div class="header"><p class="y">${year}<a onclick="scrollYear(-1);">-</a><a onclick="scrollYear(1);">+</a></p><p class="p">${yearProgress(year) + "%"}</p></div>`;
   }
 
   function yearProgress(year)
@@ -64,7 +68,7 @@ function Year(y)
       {
         y = week * 14 + 2;
         let day = new Date(year, month, date, 0);
-        
+
         if(day.getDay() != week)
         {
           style = "null";
@@ -95,7 +99,7 @@ function Year(y)
   }
 }
 
-function changeHash(i)
+function scrollYear(i)
 {
   location.hash = parseInt(location.hash.replace('#','')) + parseInt(i);
 }
