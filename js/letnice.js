@@ -5,7 +5,7 @@ function Year(letnice)
   let year;
 
   isNaN(letnice) || letnice==null ? year = new Date().getFullYear() : year = String(letnice).replace("#", "").substr(0,4);
-  location.hash = year;
+  window.location.hash = year;
 
   const monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
   const dayNames = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",  "Sunday" ]
@@ -29,13 +29,16 @@ function Year(letnice)
 
   function doHeader()
   {
-    return `<div class="header"><p class="y">${year}<a onclick="scrollYear(-1);">-</a><a onclick="scrollYear(1);">+</a></p><p class="p">${yearProgress(year) + "%"}</p></div>`;
+    return `<div class="header"><p class="y">${year}<a onclick="scrollYear(-1);">-</a><a onclick="scrollYear(1);">+</a></p><p class="p">${yearProgress(year)}</p></div>`;
   }
 
   function yearProgress(year)
   {
-    progress = new Date() - new Date(year, 0, 1, 0);
-    return ((progress/31536000000)*100).toFixed(2);
+    diff = new Date() - new Date(year, 0, 1, 0);
+    progress = ((diff/31536000000)*100).toFixed(2);
+    yd = Math.abs((progress / 100).toFixed(2));
+
+    return progress < 0 ? yd + ` YEARS AWAY` : progress > 100 ? yd + ` YEARS AGO` : progress+"%";
   }
 
   function doLabels()
