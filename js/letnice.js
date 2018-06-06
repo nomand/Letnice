@@ -1,11 +1,13 @@
-function Year()
+function Year(y)
 {
   let base = document.getElementById("center");
-
+  
   const monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
   const dayNames = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",  "Sunday" ]
 
-  let year = new Date().getFullYear();
+  let year = y;//new Date().getFullYear();
+  window.location.hash = year;
+
   let month = 0;
   let today = new Date(year, new Date().getMonth(), new Date().getDate()-1, 0);
   let style = "day";
@@ -24,7 +26,7 @@ function Year()
 
   function doHeader()
   {
-    return `<div class="header"><p class="y">${year}</p><p class="p">${yearProgress(year) + "%"}</p></div>`;
+    return `<div class="header"><p class="y">${year}<a onclick="changeHash(1);">+</a><a onclick="changeHash(-1);">-</a></p><p class="p">${yearProgress(year) + "%"}</p></div>`;
   }
 
   function yearProgress(year)
@@ -92,4 +94,17 @@ function Year()
     }
     return html;
   }
+}
+
+function changeHash(i)
+{
+  location.hash = parseInt(location.hash.replace('#','')) + parseInt(i);
+}
+
+window.onhashchange = function()
+{       
+    if (location.hash.length > 0)
+    {
+      Year(parseInt(location.hash.replace('#','')));
+    }
 }
