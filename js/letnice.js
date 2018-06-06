@@ -1,16 +1,15 @@
+const monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+const dayNames = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",  "Sunday" ]
+
 function Year(y)
 {
   let base = document.getElementById("center");
-  
-  const monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-  const dayNames = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",  "Sunday" ]
 
-  let year = y;//new Date().getFullYear();
-  window.location.hash = year;
+  let year = String(y).replace("#", "");
 
   let month = 0;
   let today = new Date(year, new Date().getMonth(), new Date().getDate()-1, 0);
-  let style = "day";
+  let style = "";
 
   while(month < 12)
   {
@@ -102,9 +101,6 @@ function changeHash(i)
 }
 
 window.onhashchange = function()
-{       
-    if (location.hash.length > 0)
-    {
-      Year(parseInt(location.hash.replace('#','')));
-    }
+{
+  Year(parseInt(location.hash.replace('#','')));
 }
