@@ -1,8 +1,8 @@
 html,
 body {
+    display: block;
     height: 100%;
     width: 100%;
-    display: block;
     padding: 0px;
     margin: 0px;
     font-family: 'input_mono_regular';
@@ -23,14 +23,16 @@ section {
 }
 
 .month { width:100px; margin: 10px; display: inline-block;}
-.header { margin-bottom: 40px; }
+.header { margin: 0px 0px 40px 10px; text-align: left; align-content: flex-start;}
 
 p  { margin: 0px; }
-.m { font-size: 20px; font-weight: bold; margin-bottom: 5px; text-align: left; }
+
 .y { font-size: 40px; font-weight: bold; }
-.y a { font-size: 20px; cursor: pointer; width: 24px; height: 24px; }
-.y a:hover {color: #ffffff; background-color: #000000;}
-.p { font-size: 20px; text-align: left; color: #8b8b8b}
+.y a { text-align: center; color: #000; width: 30px; display: inline-block; margin-left: 10px;}
+.y a:hover { color: #ffffff; background: #000; cursor: pointer;}
+.p { font-size: 20px; color: #8b8b8b}
+
+.m { font-size: 20px; font-weight: bold; margin-bottom: 5px; text-align: left; }
 
 svg.graph { color:white; width: 100%; }
 svg.graph text {font-family: 'input_mono_regular'; stroke:none; fill:#8b8b8b; font-size:14px; text-anchor: middle; }
@@ -51,4 +53,3 @@ svg.graph path { stroke-linecap: butt; stroke-dasharray: 1,1; fill:none; stroke:
 
 @media only screen and (max-width: 720px)
 { section { width: 360px; }}
-

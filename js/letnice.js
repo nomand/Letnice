@@ -4,8 +4,7 @@ function Year(letnice)
   base.innerHTML = "";
   let year;
 
-  isNaN(letnice) ? year = new Date().getFullYear() : year = String(letnice).replace("#", "").substr(0,4);
-
+  isNaN(letnice) || letnice==null ? year = new Date().getFullYear() : year = String(letnice).replace("#", "").substr(0,4);
   location.hash = year;
 
   const monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
@@ -15,10 +14,11 @@ function Year(letnice)
   let today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()-1, 0);
   let style = "";
   
+  base.innerHTML += doHeader();
+  
   while(month < 12)
   {
     base.innerHTML += `<div class="month">
-      ${month==0?doHeader():""}
       <p class="m">${monthNames[new Date(year, month).getMonth()].substr(0,2)}</p>
       <svg class="graph" id="${monthNames[month]}">
       ${doLabels()}
