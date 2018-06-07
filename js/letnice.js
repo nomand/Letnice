@@ -13,7 +13,8 @@ function Year(letnice)
   let month = 0;
   let today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()-1, 0);
   let style = "";
-  
+  let footer = "";
+
   base.innerHTML += doHeader();
   
   while(month < 12)
@@ -27,9 +28,16 @@ function Year(letnice)
     month++
   }
 
+  base.innerHTML += doFooter();
+
   function doHeader()
   {
     return `<div class="header"><p class="y">${year}<a onclick="scrollYear(-1);">-</a><a onclick="scrollYear(1);">+</a></p><p class="p">${yearProgress(year)}</p></div>`;
+  }
+
+  function doFooter(content)
+  {
+    return `<div class="footer">${footer}</div>`;
   }
 
   function yearProgress(year)
@@ -48,7 +56,7 @@ function Year(letnice)
     
     for(i = 0; i < 7; i++)
     {
-      y = (i * 14) + 1;
+      y = (i * 14);
       html += `<text class="dayLabel" x="5" y='${y}' dy="10">${dayNames[i].substr(0,1)}</text>`
     }
     return html;
@@ -69,7 +77,7 @@ function Year(letnice)
       
       while(week < 7 && date != monthLength)
       {
-        y = week * 14 + 2;
+        y = week * 14;
         let day = new Date(year, month, date, 0);
 
         if(day.getDay() != week)
@@ -93,7 +101,7 @@ function Year(letnice)
         {
           style = "day";
         }
-        html += `<rect class='${style}' x='${x}' y='${y}' title='${(date+1) == 0 ? "null" : dayNames[week] + " " + (date+1)}' width="12px" height="12px" rx="2" ry="2" onclick=""></rect>`
+        html += `<rect class='${style}' x='${x}' y='${y}' title='${(date+1) == 0 ? "null" : dayNames[week] + " " + (date+1)}' width="12px" height="12px" rx="2" ry="2" onclick="doFooter()"></rect>`
         week++
         date++
       }
