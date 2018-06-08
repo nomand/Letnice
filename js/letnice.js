@@ -86,6 +86,10 @@ function Year(letnice)
           style = "null";
           date--
         }
+        else if(String(day) == String(today))
+        {
+          style = "today";
+        }
         else if(day < today)
         {
           style = "gone";
@@ -93,10 +97,6 @@ function Year(letnice)
         else if(day.getDay() == 5 || day.getDay() == 6)
         {
           style = "weekend";
-        }
-        else if(String(day) == String(today))
-        {
-          style = "today";
         }
         else
         {
