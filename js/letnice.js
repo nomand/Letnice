@@ -1,10 +1,5 @@
-function UpdateFooter(month, date)
-{
-  footer.innerHTML = `${monthNames[month]}, ${date}`;
-}
-
-  const monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-  const dayNames = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",  "Sunday" ]
+const monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+const dayNames = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",  "Sunday" ]
 
 function Year(letnice)
 {
@@ -14,8 +9,6 @@ function Year(letnice)
 
   isNaN(letnice) || letnice==null ? year = new Date().getFullYear() : year = String(letnice).replace("#", "").substr(0,4);
   window.location.hash = year;
-
-
 
   let month = 0;
   let today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()-1, 0);
@@ -40,7 +33,7 @@ function Year(letnice)
 
   function doHeader()
   {
-    return `<div class="header"><p class="y">${year}<a onclick="scrollYear(-1);">-</a><a onclick="scrollYear(1);">+</a></p><p class="p">${yearProgress(year)}</p></div>`;
+    return `<div class="header"><p class="y">${year}<a onclick="getYear(-1);">-</a><a onclick="getYear(1);">+</a></p><p class="p">${yearProgress(year)}</p></div>`;
   }
 
   function doFooter(content)
@@ -109,7 +102,7 @@ function Year(letnice)
         {
           style = "day";
         }
-        html += `<rect class='${style}' x='${x}' y='${y}' title='${(date+1) == 0 ? "null" : dayNames[week] + " " + (date+1)}' width="12px" height="12px" rx="2" ry="2" onclick="UpdateFooter('${month}', '${(date+1)}')"></rect>`
+        html += `<rect class='${style}' x='${x}' y='${y}' title='${(date+1) == 0 ? "null" : dayNames[week] + " " + (date+1)}' width="12px" height="12px" rx="2" ry="2" onclick="UpdateFooter('${year}', '${month}', '${(date+1)}', '${week}')"></rect>`
         week++
         date++
       }
@@ -118,7 +111,17 @@ function Year(letnice)
   }
 }
 
-function scrollYear(i)
+function UpdateFooter(year, month, date, week)
+{
+  let diff = ((new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0) - new Date(year, month, date))/86400000);
+  let num = Math.abs(diff).toFixed();
+  let calc;
+
+  diff < 0 ? calc = `In ${num} Day${num>1?'s':''}.` : diff == 0 ? calc = `Today.`: calc = `${num} Day${num>1?'s':''} ago.`
+  footer.innerHTML = `${monthNames[month]} ${date}, ${dayNames[week]}. ${calc}`;
+}
+
+function getYear(i)
 {
   location.hash = parseInt(location.hash.replace('#','')) + parseInt(i);
 }
