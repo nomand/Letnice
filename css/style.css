@@ -2,6 +2,7 @@ html,
 body {
     display: block;
     height: 100%;
+    min-height: 400px;
     width: 100%;
     padding: 0px;
     margin: 0px;
@@ -23,8 +24,8 @@ section {
 }
 
 .month { margin: 10px; display: inline-block; width:100px; height: 130px; }
-.header { margin: 0px 0px 40px 10px; text-align: left; align-content: flex-start;}
-.footer { margin: 20px 0px 0px 10px; text-align: left; height: 20px; }
+.header { margin: 0px 10px 40px 10px; text-align: left; align-content: flex-start;}
+.footer { margin: 20px 10px 0px 10px; text-align: left; height: 20px; }
 
 p  { margin: 0px; }
 
