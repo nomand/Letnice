@@ -1,3 +1,11 @@
+function UpdateFooter(month, date)
+{
+  footer.innerHTML = `${monthNames[month]}, ${date}`;
+}
+
+  const monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+  const dayNames = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",  "Sunday" ]
+
 function Year(letnice)
 {
   let base = document.getElementById("center");
@@ -7,8 +15,7 @@ function Year(letnice)
   isNaN(letnice) || letnice==null ? year = new Date().getFullYear() : year = String(letnice).replace("#", "").substr(0,4);
   window.location.hash = year;
 
-  const monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-  const dayNames = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",  "Sunday" ]
+
 
   let month = 0;
   let today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()-1, 0);
@@ -29,6 +36,7 @@ function Year(letnice)
   }
 
   base.innerHTML += doFooter();
+  footer = document.getElementById("footer");
 
   function doHeader()
   {
@@ -37,7 +45,7 @@ function Year(letnice)
 
   function doFooter(content)
   {
-    return `<div class="footer">${footer}</div>`;
+    return `<div class="footer" id="footer">${footer}</div>`;
   }
 
   function yearProgress(year)
@@ -101,7 +109,7 @@ function Year(letnice)
         {
           style = "day";
         }
-        html += `<rect class='${style}' x='${x}' y='${y}' title='${(date+1) == 0 ? "null" : dayNames[week] + " " + (date+1)}' width="12px" height="12px" rx="2" ry="2" onclick="doFooter()"></rect>`
+        html += `<rect class='${style}' x='${x}' y='${y}' title='${(date+1) == 0 ? "null" : dayNames[week] + " " + (date+1)}' width="12px" height="12px" rx="2" ry="2" onclick="UpdateFooter('${month}', '${(date+1)}')"></rect>`
         week++
         date++
       }
