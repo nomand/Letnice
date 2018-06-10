@@ -102,9 +102,9 @@ function Year(letnice)
         {
           style = "day";
         }
-
-        html += `<rect class='${style}' x='${x}' y='${y}' title='${(date+1) == 0 ? "null" : dayNames[week] + " " + (date+1)}' width="12px" height="12px" rx="2" ry="2" onclick="
-        UpdateFooter(${year}, ${month}, ${(date+1)}, ${week}, this)" onBlur=""></rect>`
+        
+        html += `<rect id="square" class='${style}' x='${x}' y='${y}' title='${(date+1) == 0 ? "null" : dayNames[week] + " " + (date+1)}' width="12px" height="12px" rx="2" ry="2" onclick="
+        UpdateFooter(${year}, ${month}, ${(date+1)}, ${week}, this)" onblur="" tabIndex="0"></rect>`
 
         week++
         date++
@@ -116,10 +116,7 @@ function Year(letnice)
 
 function UpdateFooter(year, month, date, week, obj)
 {
-  let s = obj.style;
-  obj.setAttribute("style", "fill: #ff1e00; outline: none;");
-  obj.addEventListener("blur",   ()=>{ obj.setAttribute("style", s); footer.innerHTML="";})
-
+  obj.addEventListener("blur", ()=>{ footer.innerHTML=""; });
   let diff = ((new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0) - new Date(year, month, date))/86400000);
   let num = Math.abs(diff).toFixed();
   let calc;
