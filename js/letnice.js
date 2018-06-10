@@ -102,7 +102,10 @@ function Year(letnice)
         {
           style = "day";
         }
-        html += `<rect class='${style}' x='${x}' y='${y}' title='${(date+1) == 0 ? "null" : dayNames[week] + " " + (date+1)}' width="12px" height="12px" rx="2" ry="2" onclick="UpdateFooter('${year}', '${month}', '${(date+1)}', '${week}')"></rect>`
+
+        html += `<rect class='${style}' x='${x}' y='${y}' title='${(date+1) == 0 ? "null" : dayNames[week] + " " + (date+1)}' width="12px" height="12px" rx="2" ry="2" onclick="
+        UpdateFooter(${year}, ${month}, ${(date+1)}, ${week}, this)" onBlur=""></rect>`
+
         week++
         date++
       }
@@ -111,8 +114,12 @@ function Year(letnice)
   }
 }
 
-function UpdateFooter(year, month, date, week)
+function UpdateFooter(year, month, date, week, obj)
 {
+  let s = obj.style;
+  obj.setAttribute("style", "fill: #ff1e00; outline: none;");
+  obj.addEventListener("blur",   ()=>{ obj.setAttribute("style", s); footer.innerHTML="";})
+
   let diff = ((new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0) - new Date(year, month, date))/86400000);
   let num = Math.abs(diff).toFixed();
   let calc;
@@ -121,9 +128,9 @@ function UpdateFooter(year, month, date, week)
   footer.innerHTML = `${monthNames[month]} ${date}, ${dayNames[week]}. ${calc}`;
 }
 
-function getYear(i)
+function getYear(dir)
 {
-  location.hash = parseInt(location.hash.replace('#','')) + parseInt(i);
+  location.hash = parseInt(location.hash.replace('#','')) + parseInt(dir);
 }
 
 window.onhashchange = function()
