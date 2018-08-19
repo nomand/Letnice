@@ -19,27 +19,22 @@ function Year(letnice)
   
   while(month < 12)
   {
-    base.innerHTML += `<div class="month">
-      <p class="m">${monthNames[new Date(year, month).getMonth()].substr(0,2)}</p>
-      <svg class="graph" id="${monthNames[month]}">
-      ${doLabels()}
-      ${doMonth(month)}
-      </svg></div>`
+    base.innerHTML += 
+     `<div class="month">
+        <p class="m">${monthNames[new Date(year, month).getMonth()].substr(0,2)}</p>
+        <svg class="graph" id="${monthNames[month]}">
+          ${doLabels()}
+          ${doMonth(month)}
+        </svg>
+      </div>`
     month++
   }
 
   base.innerHTML += doFooter();
   footer = document.getElementById("footer");
 
-  function doHeader()
-  {
-    return `<div class="header"><p class="y">${year}<a onclick="getYear(-1);">-</a><a onclick="getYear(1);">+</a></p><p class="p">${yearProgress(year)}</p></div>`;
-  }
-
-  function doFooter(content)
-  {
-    return `<div class="footer" id="footer">${footer}</div>`;
-  }
+  function doHeader(){ return `<div class="header"><p class="y">${year}<a onclick="getYear(-1);">-</a><a onclick="getYear(1);">+</a></p><p class="p">${yearProgress(year)}</p></div>`; }
+  function doFooter(){ return `<div class="footer" id="footer">${footer}</div>`; }
 
   function yearProgress(year)
   {
@@ -82,30 +77,13 @@ function Year(letnice)
         let day = new Date(year, month, date, 0);
         let dotab = `tabIndex="0"`;
 
-        if(day.getDay() != week)
-        {
-          style = "null";
-          dotab = "";
-          date--
-        }
-        else if(String(day) == String(today))
-        {
-          style = "today";
-        }
-        else if(day < today)
-        {
-          style = "gone";
-        }
-        else if(day.getDay() == 5 || day.getDay() == 6)
-        {
-          style = "weekend";
-        }
-        else
-        {
-          style = "day";
-        }
+        if(day.getDay() != week){ style = "null"; dotab = ""; date-- }
+        else if(String(day) == String(today)) style = "today";
+        else if(day < today) style = "gone";
+        else if(day.getDay() == 5 || day.getDay() == 6) style = "weekend";
+        else style = "day";
         
-        html += `<rect id="square" class='${style}' x='${x}' y='${y}' title='${(date+1) == 0 ? "null" : dayNames[week] + " " + (date+1)}' width="12px" height="12px" rx="2" ry="2" onclick="
+        html +=`<rect id="square" class='${style}' x='${x}' y='${y}' title='${(date+1) == 0 ? "null" : dayNames[week] + " " + (date+1)}' width="12px" height="12px" rx="2" ry="2" onclick="
         UpdateFooter(${year}, ${month}, ${(date+1)}, ${week}, this)" onblur="" ${dotab}></rect>`
 
         week++
@@ -127,12 +105,5 @@ function UpdateFooter(year, month, date, week, obj)
   footer.innerHTML = `${monthNames[month]} ${date}, ${dayNames[week]}. ${calc}`;
 }
 
-function getYear(dir)
-{
-  location.hash = parseInt(location.hash.replace('#','')) + parseInt(dir);
-}
-
-window.onhashchange = function()
-{
-  Year(parseInt(location.hash.replace('#','')));
-}
+function getYear(dir) { location.hash = parseInt(location.hash.replace('#','')) + parseInt(dir); }
+window.onhashchange = function(){ Year(parseInt(location.hash.replace('#',''))); }

@@ -1,3 +1,10 @@
+:root {
+    --bright: #eeeeee;
+    --gray: #8b8b8b;
+    --dark: #181818;
+    --select: #ff1e00;
+}
+
 html,
 body {
     display: block;
@@ -8,7 +15,10 @@ body {
     margin: 0px;
     font-family: 'input_mono_regular';
     text-transform: uppercase;
-    background-color: #fff;
+    background-color: var(--dark);
+    background-image: url('../bg/2018.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 section {
@@ -30,23 +40,23 @@ section {
 
 p  { margin: 0px; }
 
-.y { font-size: 40px; font-weight: bold; }
-.y a { text-align: center; color: #000; width: 30px; display: inline-block; margin-left: 10px;}
-.y a:hover { color: #ffffff; background: #000; cursor: pointer;}
-.p { font-size: 20px; color: #8b8b8b}
+.y { color: var(--bright); font-size: 40px; font-weight: bold; }
+.y a { text-align: center; width: 30px; display: inline-block; margin-left: 10px;}
+.y a:hover { color: #ffffff; background: #000; cursor: pointer; }
+.p { font-size: 20px; color: var(--gray); }
 
-.m { font-size: 20px; font-weight: bold; margin-bottom: 5px; text-align: left; }
+.m { color: var(--bright); font-size: 20px; font-weight: bold; margin-bottom: 5px; text-align: left; }
 
-svg.graph { color:white; width: 100%; height: 100px; }
-svg.graph text {font-family: 'input_mono_regular'; stroke:none; fill:#8b8b8b; font-size:14px; text-anchor: middle; }
+svg.graph { width: 100%; height: 100px; }
+svg.graph text {font-family: 'input_mono_regular'; stroke:none; fill: var(--gray); font-size:14px; text-anchor: middle; }
 svg.graph text.dayLabel { font-size: 10px; }
 svg.graph rect { stroke:none; outline: none; }
 svg.graph rect:hover, rect:focus { fill: #ff1e00 !important; cursor:pointer; }
 
 svg.graph rect.null { fill: none; stroke: none;}
-svg.graph rect.today { fill:#ff1e00; }
-svg.graph rect.day { fill:#8b8b8b; }
-svg.graph rect.weekend { fill:#747474 }
+svg.graph rect.today { fill:var(--select); }
+svg.graph rect.day { fill: var(--bright); }
+svg.graph rect.weekend { fill: var(--gray); }
 svg.graph rect.gone { fill:#000000 }
 svg.graph path { stroke-linecap: butt; stroke-dasharray: 1,1; fill:none; stroke:#333; stroke-width:13px }
 
