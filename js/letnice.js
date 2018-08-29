@@ -84,7 +84,7 @@ function Year(letnice)
         else style = "day";
         
         html +=`<rect id="square" class='${style}' x='${x}' y='${y}' title='${(date+1) == 0 ? "null" : dayNames[week] + " " + (date+1)}' width="12px" height="12px" rx="2" ry="2" onclick="
-        UpdateFooter(${year}, ${month}, ${(date+1)}, ${week}, this)" onblur="" ${dotab}></rect>`
+        UpdateFooter(${year}, ${month}, ${(date+1)}, ${week}, this)" ${dotab}></rect>`
 
         week++
         date++

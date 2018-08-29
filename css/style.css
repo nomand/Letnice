@@ -1,6 +1,6 @@
 :root {
     --bright: #d9d9d0;
-    --gray: #8b8b8b;
+    --gray: #959585;
     --dark: #181818;
     --select: #ff1e00;
 }
@@ -56,7 +56,7 @@ svg.graph rect.null { fill: none; stroke: none;}
 svg.graph rect.today { fill:var(--select); }
 svg.graph rect.day { fill: var(--bright); }
 svg.graph rect.weekend { fill: var(--gray); }
-svg.graph rect.gone { fill:#000000 }
+svg.graph rect.gone { fill:#070707 }
 svg.graph path { stroke-linecap: butt; stroke-dasharray: 1,1; fill:none; stroke:#333; stroke-width:13px }
 
 @media only screen and (min-width: 1440px)
