@@ -1,5 +1,5 @@
 :root {
-    --bright: #eeeeee;
+    --bright: #d9d9d0;
     --gray: #8b8b8b;
     --dark: #181818;
     --select: #ff1e00;
@@ -16,7 +16,6 @@ body {
     font-family: 'input_mono_regular';
     text-transform: uppercase;
     background-color: var(--dark);
-    background-image: url('../bg/2018.jpg');
     background-position: center center;
     background-repeat: no-repeat;
 }
@@ -36,7 +35,7 @@ section {
 
 .month { margin: 10px; display: inline-block; width:100px; height: 130px; }
 .header { margin: 0px 10px 40px 10px; text-align: left; align-content: flex-start;}
-.footer { margin: 20px 10px 0px 10px; text-align: left; height: 20px; }
+.footer { margin: 20px 10px 0px 10px; text-align: left; height: 20px; color: var(--bright); }
 
 p  { margin: 0px; }
 
